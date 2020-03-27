@@ -1,3 +1,4 @@
+const generateUniqueId = require('../utils/generateUniqueId');
 const connection = require('../database/connection');
 const crypto = require('crypto'); // importa a biblioteca crypto para gerarmos o id
 
@@ -14,7 +15,7 @@ module.exports = {
         const { name, email, whatsapp, city, uf } = request.body;
 
         // Gerar ID aleatório com 4 letras, utilizando a biblioteca crypto
-        const id = crypto.randomBytes(4).toString('HEX');
+        const id = generateUniqueId();
     
         await connection('ongs').insert({
             id,
